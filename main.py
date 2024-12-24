@@ -1,28 +1,41 @@
+import os
 import asyncio
 from aiogram import Bot, Dispatcher, types
 from aiogram.filters import CommandStart
+from dotenv import find_dotenv, load_dotenv
 
-TOKEN = '7656550573:AAFnOlY01aYWpCvjXAiMFn4E2jOzYKZfczE'
+load_dotenv(find_dotenv())
+TOKEN = os.getenv("TOKEN")
+
 bot = Bot(TOKEN)
 dp = Dispatcher()
 
 
 @dp.message(CommandStart())
 async def start_cmd(message: types.Message):
-     await message.answer("Даров")
+    await message.answer("Даров")
 
 
 # dp.message()
 # async def echo(message: types.Message):
-#     await message.answer("")
+#    await message.answer("Йоу")
 
 
-dp.message()
+# @dp.message()
+# async def convers(message: types.Message):
+#     if message.text == "Бармалей трибубей":
+#         await message.answer("Это кто?")
+
+#     else:
+#         await message.answer(message.text)
+
+
+@dp.message()
 async def my_func(message: types.Message):
-    if message.text == 'Привет':
-        await message.answer("Привет")
-    elif message.text == 'Пока':
-        await message.anser("Пока")
+    if message.text == "Привет":
+        await message.answer("Приве")
+    elif message.text == "Пока":
+        await message.answer("Пока")
 
 
 async def main():
